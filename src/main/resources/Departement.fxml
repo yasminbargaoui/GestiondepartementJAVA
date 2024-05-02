@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="198.0" prefWidth="568.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.DepartementC">
+   <children>
+      <Pane fx:id="pn_intern" layoutX="1.0" layoutY="-1.0" prefHeight="206.0" prefWidth="592.0" style="-fx-background-color: white;">
+         <children>
+            <Button layoutX="10.0" layoutY="169.0" mnemonicParsing="false" onAction="#back" prefHeight="25.0" prefWidth="79.0" text="back" />
+            <Separator layoutX="19.0" layoutY="196.0" prefHeight="0.0" prefWidth="537.0" />
+            <Label layoutX="22.0" layoutY="7.0" prefHeight="18.0" prefWidth="235.0" text="internship list :">
+               <font>
+                  <Font name="Segoe UI Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <ScrollPane layoutX="3.0" layoutY="25.0" prefHeight="140.0" prefWidth="577.0">
+               <content>
+                  <GridPane fx:id="grid">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                  </GridPane>
+               </content>
+            </ScrollPane>
+         </children>
+      </Pane>
+      <Pane fx:id="pn_add" layoutY="-1.0" prefHeight="206.0" prefWidth="577.0" style="-fx-background-color: white;">
+         <children>
+
+            <Label layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="127.0" text="Create internship :">
+               <font>
+                  <Font name="Segoe UI Bold Italic" size="12.0" />
+               </font>
+            </Label>
+
+            <Button layoutX="477.0" layoutY="161.0" mnemonicParsing="false" onAction="#create" prefHeight="25.0" prefWidth="69.0" text="Add" />
+            <TextField fx:id="tf_title" layoutX="4.0" layoutY="50.0" promptText="title .." />
+            <TextField fx:id="tf_desc" layoutX="212.0" layoutY="50.0" promptText="description .." />
+            <TextField fx:id="tf_tech" layoutX="397.0" layoutY="50.0" promptText="technology .." />
+            <TextField fx:id="tf_type" layoutX="4.0" layoutY="107.0" promptText="typeinternship .." />
+            <TextField fx:id="tf_periode" layoutX="396.0" layoutY="107.0" promptText="period .." />
+            <DatePicker fx:id="tf_start" layoutX="181.0" layoutY="107.0" promptText="start date .. " />
+            <Separator layoutX="18.0" layoutY="190.0" prefHeight="17.0" prefWidth="537.0" />
+         </children>
+      </Pane>
+      <Pane fx:id="pn_info" layoutX="1.0" layoutY="-1.0" prefHeight="206.0" prefWidth="592.0" style="-fx-background-color: white;">
+         <children>
+            <Label fx:id="name" layoutX="22.0" layoutY="54.0" prefHeight="17.0" prefWidth="300.0" text="Create internship :">
+               <font>
+                  <Font name="Segoe UI Bold Italic" size="12.0" />
+               </font>
+            </Label>
+
+            <TextArea fx:id="desc" layoutX="22.0" layoutY="86.0" prefHeight="94.0" prefWidth="428.0" />
+            <Button fx:id="btnadd" layoutX="473.0" layoutY="155.0" mnemonicParsing="false" onAction="#toadd" prefHeight="25.0" prefWidth="101.0" text="Add intern" />
+            <Button fx:id="btnmod" layoutX="473.0" layoutY="117.0" mnemonicParsing="false" onAction="#update" prefHeight="25.0" prefWidth="101.0" text="Update" />
+            <Button fx:id="btndel" layoutX="473.0" layoutY="79.0" mnemonicParsing="false" onAction="#delete" prefHeight="25.0" prefWidth="101.0" text="Delete" />
+            <TextField fx:id="tf_name" layoutX="22.0" layoutY="50.0" prefHeight="25.0" prefWidth="265.0" />
+            <Separator layoutX="19.0" layoutY="191.0" prefHeight="0.0" prefWidth="537.0" />
+            <Label fx:id="headmaster" layoutX="22.0" layoutY="14.0" prefHeight="18.0" prefWidth="235.0" text="Create internship :">
+               <font>
+                  <Font name="Segoe UI Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Button layoutX="474.0" layoutY="44.0" mnemonicParsing="false" onAction="#intern" prefHeight="25.0" prefWidth="101.0" text="Interships" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
