@@ -35,7 +35,7 @@ public class ClientC {
         int column = 0;
         int row = 2;
         try {
-            //tantque resultt***
+            //***
             while (resultSet2.next()) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("/Departement.fxml"));
