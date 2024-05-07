@@ -73,6 +73,8 @@ public class DepartementC {
 
     @FXML
     private TextField tf_type;
+    @FXML
+    private TextField tf_state;
 
     @FXML
     void back(ActionEvent event) {
@@ -127,7 +129,7 @@ public class DepartementC {
             alert.showAndWait();
             return;
         }
-        Internship p = new Internship(this.id,tf_title.getText(),tf_desc.getText(),tf_tech.getText(),tf_type.getText(),String.valueOf(tf_start.getValue()),tf_periode.getText());
+        Internship p = new Internship(this.id,tf_title.getText(),tf_desc.getText(),tf_tech.getText(),tf_type.getText(),String.valueOf(tf_start.getValue()),tf_periode.getText(),tf_state.getText());
         is.ajouterEntite(p);
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Valider");
@@ -139,6 +141,7 @@ public class DepartementC {
         tf_type.clear();
         tf_tech.clear();
         tf_periode.clear();
+        tf_state.clear();
         pn_info.toFront();
     }
 
@@ -238,7 +241,8 @@ public class DepartementC {
                     String typeinternship=resultSet2.getString("typeinternship");
                     String startdate=resultSet2.getString("startdate");
                     String period=resultSet2.getString("period");
-                    Internship ppppp = new Internship(id,idd,title,description,technology,typeinternship,startdate,period);
+                    String state=resultSet2.getString("state");
+                    Internship ppppp = new Internship(id,idd,title,description,technology,typeinternship,startdate,period,state);
                     itemController.setData(ppppp);
                     if (column == 1) {
                         column = 0;
@@ -285,7 +289,8 @@ public class DepartementC {
                     String typeinternship=resultSet2.getString("typeinternship");
                     String startdate=resultSet2.getString("startdate");
                     String period=resultSet2.getString("period");
-                    Internship ppppp = new Internship(id,idd,title,description,technology,typeinternship,startdate,period);
+                    String state=resultSet2.getString("state");
+                    Internship ppppp = new Internship(id,idd,title,description,technology,typeinternship,startdate,period,state);
                     itemController.setDataf(ppppp);
                     if (column == 1) {
                         column = 0;

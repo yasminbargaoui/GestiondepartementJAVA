@@ -216,7 +216,7 @@ public class InternC {
             tf_tech.setEditable(true);
             tf_desc.setEditable(true);
             tf_title.setEditable(true);
-            tf_state.setEditable(true);
+
         } else {
             LocalDate currentDate = LocalDate.now();
             if (tf_periode.getText().isEmpty() || tf_desc.getText().isEmpty()|| tf_title.getText().isEmpty()|| tf_tech.getText().isEmpty() ||tf_date.getValue().isBefore(currentDate)||tf_date.getValue()==null||tf_tech.getText().isEmpty() ) {
@@ -240,6 +240,7 @@ public class InternC {
             tf_tech.setEditable(false);
             tf_desc.setEditable(false);
             tf_title.setEditable(false);
+            tf_state.setEditable(false);
             System.out.println(this.id);
             btnmod.setText("Update");
         }
