@@ -35,9 +35,9 @@ import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.IOException;
-//importation excel chat
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 public class Dashboard {
 
     @FXML
@@ -194,26 +194,36 @@ public class Dashboard {
         }
     }
 
+
     @FXML
     void excel(ActionEvent event) {
         List<String> ls = ds.afficherEntites();
         List<String[]> dataList = new ArrayList<>();
 
-// Conversion de chaque chaîne en un tableau contenant cette chaîne
+        // Ajouter l'en-tête du fichier CSV
+        dataList.add(new String[]{"ID", "Name", "Description"});
+
+        // Conversion de chaque chaîne pour extraire les valeurs des propriétés
         for (String s : ls) {
-            dataList.add(new String[]{s});
+            // Supprimez les parties inutiles de la chaîne
+            String[] parts = s.split(", ");
+            String id = parts[0].substring(parts[0].indexOf('=') + 1);
+           // String headmasterId = parts[1].substring(parts[1].indexOf('=') + 1);
+            String name = parts[2].substring(parts[2].indexOf('\'') + 1, parts[2].lastIndexOf('\''));
+            String description = parts[3].substring(parts[3].indexOf('\'') + 1, parts[3].lastIndexOf('\''));
+
+            // Ajoutez les valeurs extraites dans un tableau de chaînes
+            String[] fields = {id,  name, description};
+            dataList.add(fields);
         }
 
-// Écriture des données dans le fichier CSV
+        // Écriture des données dans le fichier CSV
         try (CSVWriter writer = new CSVWriter(new FileWriter("C:\\Users\\yasmin\\Desktop\\test.csv"))) {
             writer.writeAll(dataList);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
-    private ResultSet rs=ds.Getall();
-
 
 
     @FXML

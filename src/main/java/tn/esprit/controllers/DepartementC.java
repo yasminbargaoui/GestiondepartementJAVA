@@ -96,7 +96,7 @@ public class DepartementC {
     public void setData(Departement q) {
         this.d = q;
         id=q.getId();
-       // headmaster.setText("Headmaster id :"+String.valueOf(q.getHeadmaster_id()));
+        // headmaster.setText("Headmaster id :"+String.valueOf(q.getHeadmaster_id()));
         name.setText("Name :"+q.getName());
         desc.setText(q.getDescription());
         desc.setEditable(false);
@@ -119,28 +119,28 @@ public class DepartementC {
     void create(ActionEvent event) {
         LocalDate currentDate = LocalDate.now();
         if (tf_title.getText().isEmpty() || tf_desc.getText().isEmpty() ||tf_tech.getText().isEmpty() ||tf_type.getText().isEmpty()||tf_periode.getText().isEmpty()||tf_start.getValue().isBefore(currentDate)||tf_start.getValue()==null){
-                // Afficher un message d'alerte
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Champs manquants");
-                alert.setHeaderText(null);
-                alert.setContentText("Please fill all fields !");
-                alert.showAndWait();
-                return;
-            }
-            Internship p = new Internship(this.id,tf_title.getText(),tf_desc.getText(),tf_tech.getText(),tf_type.getText(),String.valueOf(tf_start.getValue()),tf_periode.getText());
-            is.ajouterEntite(p);
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Valider");
+            // Afficher un message d'alerte
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Champs manquants");
             alert.setHeaderText(null);
-            alert.setContentText("Intership created successfully !");
+            alert.setContentText("Please fill all fields !");
             alert.showAndWait();
-            tf_title.clear();
-            tf_desc.clear();
-            tf_type.clear();
-            tf_tech.clear();
-            tf_periode.clear();
-            pn_info.toFront();
+            return;
         }
+        Internship p = new Internship(this.id,tf_title.getText(),tf_desc.getText(),tf_tech.getText(),tf_type.getText(),String.valueOf(tf_start.getValue()),tf_periode.getText());
+        is.ajouterEntite(p);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Valider");
+        alert.setHeaderText(null);
+        alert.setContentText("Intership created successfully !");
+        alert.showAndWait();
+        tf_title.clear();
+        tf_desc.clear();
+        tf_type.clear();
+        tf_tech.clear();
+        tf_periode.clear();
+        pn_info.toFront();
+    }
 
 
 

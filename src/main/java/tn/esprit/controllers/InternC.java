@@ -1,3 +1,4 @@
+
 package tn.esprit.controllers;
 
 import com.google.zxing.WriterException;
