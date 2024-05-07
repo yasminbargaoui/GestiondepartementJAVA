@@ -1,4 +1,3 @@
-
 package tn.esprit.controllers;
 
 import com.google.zxing.WriterException;
@@ -81,9 +80,6 @@ public class InternC {
 
     @FXML
     private TextField tf_title;
-    @FXML
-    private TextField tf_state;
-
 
     public void setDataf(Internship q) {
         this.i = q;
@@ -96,8 +92,6 @@ public class InternC {
         tf_tech.setEditable(false);
         tf_periode.setText(q.getPeriod());
         tf_periode.setEditable(false);
-        tf_state.setText(q.getState());
-        tf_state.setEditable(false);
         btnmod.setVisible(false);
         btndel.setVisible(false);
         try {
@@ -193,7 +187,7 @@ public class InternC {
             // If the user clicked "OK" in the confirmation dialog, proceed with the deletion
             if (userResponse == ButtonType.OK) {
                 // Create a new User instance with the provided ID
-                Internship eventToDelete = new Internship(this.id,0,"","","","","","","");
+                Internship eventToDelete = new Internship(this.id,0,"","","","","","");
 
                 // Call the method to delete the user entity
                 is.supprimerEntite(eventToDelete);
@@ -216,10 +210,9 @@ public class InternC {
             tf_tech.setEditable(true);
             tf_desc.setEditable(true);
             tf_title.setEditable(true);
-
         } else {
             LocalDate currentDate = LocalDate.now();
-            if (tf_periode.getText().isEmpty() || tf_desc.getText().isEmpty()|| tf_title.getText().isEmpty()|| tf_tech.getText().isEmpty() ||tf_date.getValue().isBefore(currentDate)||tf_date.getValue()==null||tf_tech.getText().isEmpty() ) {
+            if (tf_periode.getText().isEmpty() || tf_desc.getText().isEmpty()|| tf_title.getText().isEmpty()|| tf_tech.getText().isEmpty() ||tf_date.getValue().isBefore(currentDate)||tf_date.getValue()==null ) {
                 // Afficher un message d'alerte
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Champs manquants");
@@ -228,7 +221,7 @@ public class InternC {
                 alert.showAndWait();
                 return;
             }
-            Internship p = new Internship(this.id,this.id,tf_title.getText(),tf_desc.getText(),tf_tech.getText(),i.getTypeinternship(),String.valueOf(tf_date.getValue()),tf_periode.getText(),tf_state.getText());
+            Internship p = new Internship(this.id,this.id,tf_title.getText(),tf_desc.getText(),tf_tech.getText(),i.getTypeinternship(),String.valueOf(tf_date.getValue()),tf_periode.getText());
             is.modifierEntite(p);
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Valider");
@@ -240,7 +233,6 @@ public class InternC {
             tf_tech.setEditable(false);
             tf_desc.setEditable(false);
             tf_title.setEditable(false);
-            tf_state.setEditable(false);
             System.out.println(this.id);
             btnmod.setText("Update");
         }

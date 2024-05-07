@@ -73,8 +73,6 @@ public class DepartementC {
 
     @FXML
     private TextField tf_type;
-    @FXML
-    private TextField tf_state;
 
     @FXML
     void back(ActionEvent event) {
@@ -129,7 +127,7 @@ public class DepartementC {
             alert.showAndWait();
             return;
         }
-        Internship p = new Internship(this.id,tf_title.getText(),tf_desc.getText(),tf_tech.getText(),tf_type.getText(),String.valueOf(tf_start.getValue()),tf_periode.getText(),tf_state.getText());
+        Internship p = new Internship(this.id,tf_title.getText(),tf_desc.getText(),tf_tech.getText(),tf_type.getText(),String.valueOf(tf_start.getValue()),tf_periode.getText());
         is.ajouterEntite(p);
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Valider");
@@ -141,7 +139,6 @@ public class DepartementC {
         tf_type.clear();
         tf_tech.clear();
         tf_periode.clear();
-        tf_state.clear();
         pn_info.toFront();
     }
 
@@ -175,7 +172,6 @@ public class DepartementC {
                 Dashboard itemController = fxmlLoader.getController();
                 ActionEvent e = new ActionEvent();
                 itemController.refresh(e);
-
                  */
             }
         } catch (NumberFormatException e) {
@@ -241,8 +237,7 @@ public class DepartementC {
                     String typeinternship=resultSet2.getString("typeinternship");
                     String startdate=resultSet2.getString("startdate");
                     String period=resultSet2.getString("period");
-                    String state=resultSet2.getString("state");
-                    Internship ppppp = new Internship(id,idd,title,description,technology,typeinternship,startdate,period,state);
+                    Internship ppppp = new Internship(id,idd,title,description,technology,typeinternship,startdate,period);
                     itemController.setData(ppppp);
                     if (column == 1) {
                         column = 0;
@@ -289,8 +284,7 @@ public class DepartementC {
                     String typeinternship=resultSet2.getString("typeinternship");
                     String startdate=resultSet2.getString("startdate");
                     String period=resultSet2.getString("period");
-                    String state=resultSet2.getString("state");
-                    Internship ppppp = new Internship(id,idd,title,description,technology,typeinternship,startdate,period,state);
+                    Internship ppppp = new Internship(id,idd,title,description,technology,typeinternship,startdate,period);
                     itemController.setDataf(ppppp);
                     if (column == 1) {
                         column = 0;
@@ -310,7 +304,6 @@ public class DepartementC {
                     Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            //test
         } catch (SQLException ex) {
             Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
         }
