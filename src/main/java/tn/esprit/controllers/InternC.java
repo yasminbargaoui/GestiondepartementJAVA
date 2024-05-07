@@ -81,6 +81,9 @@ public class InternC {
 
     @FXML
     private TextField tf_title;
+    @FXML
+    private TextField tf_state;
+
 
     public void setDataf(Internship q) {
         this.i = q;
@@ -93,6 +96,8 @@ public class InternC {
         tf_tech.setEditable(false);
         tf_periode.setText(q.getPeriod());
         tf_periode.setEditable(false);
+        tf_state.setText(q.getState());
+        tf_state.setEditable(false);
         btnmod.setVisible(false);
         btndel.setVisible(false);
         try {
@@ -188,7 +193,7 @@ public class InternC {
             // If the user clicked "OK" in the confirmation dialog, proceed with the deletion
             if (userResponse == ButtonType.OK) {
                 // Create a new User instance with the provided ID
-                Internship eventToDelete = new Internship(this.id,0,"","","","","","");
+                Internship eventToDelete = new Internship(this.id,0,"","","","","","","");
 
                 // Call the method to delete the user entity
                 is.supprimerEntite(eventToDelete);
@@ -222,7 +227,7 @@ public class InternC {
                 alert.showAndWait();
                 return;
             }
-            Internship p = new Internship(this.id,this.id,tf_title.getText(),tf_desc.getText(),tf_tech.getText(),i.getTypeinternship(),String.valueOf(tf_date.getValue()),tf_periode.getText());
+            Internship p = new Internship(this.id,this.id,tf_title.getText(),tf_desc.getText(),tf_tech.getText(),i.getTypeinternship(),String.valueOf(tf_date.getValue()),tf_periode.getText(),tf_state.getText());
             is.modifierEntite(p);
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Valider");
