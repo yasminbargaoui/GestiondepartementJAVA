@@ -213,7 +213,7 @@ public class Dashboard {
             String description = parts[3].substring(parts[3].indexOf('\'') + 1, parts[3].lastIndexOf('\''));
 
             // Ajoutez les valeurs extraites dans un tableau de chaînes
-            //ajoutez les valeurs.....
+
             String[] fields = {id,  name, description};
             dataList.add(fields);
         }
