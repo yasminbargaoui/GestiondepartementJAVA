@@ -98,7 +98,8 @@ public class Internship {
     public String getImgUrl() {
         return image_url;
     }
-
+*/
+    /*
     public void setImgUrl(String image_url) {
         this.image_url=image_url;
     }
