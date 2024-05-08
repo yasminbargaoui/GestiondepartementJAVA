@@ -109,6 +109,7 @@ public class InternC {
         }
         tf_date.setEditable(false);
     }
+    //qr code gene
     public void setData(Internship q) {
         this.i = q;
         id=q.getId();
