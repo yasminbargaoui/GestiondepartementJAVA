@@ -9,7 +9,7 @@ public class Internship {
     private String typeinternship;
     private String startdate;
     private String period;
-
+    // private String image_url;
     public Internship(int id, int departement_id, String title, String description, String technology, String typeinternship, String startdate, String period) {
         this.id = id;
         this.departement_id = departement_id;
@@ -94,4 +94,14 @@ public class Internship {
     public void setPeriod(String period) {
         this.period = period;
     }
+    /*
+    public String getImgUrl() {
+        return image_url;
+    }
+
+    public void setImgUrl(String image_url) {
+        this.image_url=image_url;
+    }
+
+     */
 }

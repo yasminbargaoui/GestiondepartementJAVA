@@ -54,7 +54,7 @@ import java.util.logging.Logger;
 public class InternC {
 
     private int id;
-    private Internship i ;
+    private Internship i;
     InternshipService is = new InternshipService();
 
     @FXML
@@ -82,38 +82,103 @@ public class InternC {
     private TextField tf_title;
 
 
-    public void setDataf(Internship q) {
-        this.i = q;
-        id=q.getId();
-        tf_title.setText(q.getTitle());
-        tf_title.setEditable(false);
-        tf_desc.setText(q.getDescription());
-        tf_desc.setEditable(false);
-        tf_tech.setText(q.getTechnology());
-        tf_tech.setEditable(false);
-        tf_periode.setText(q.getPeriod());
-        tf_periode.setEditable(false);
-        btnmod.setVisible(false);
-        btndel.setVisible(false);
-        try {
-            // Define the date format that matches the expected format of dateString
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
-            // Parse the dateString to a LocalDate object
-            LocalDate date = LocalDate.parse(q.getStartdate(), formatter);
 
-            // Set the parsed LocalDate to the DatePicker
-            tf_date.setValue(date);
-        } catch (DateTimeParseException e) {
-            System.err.println("Error parsing the date: " + e.getMessage());
-            // Handle error or set a default date if needed
+        public void setDataf(Internship q) {
+            this.i = q;
+            id=q.getId();
+            tf_title.setText(q.getTitle());
+            tf_title.setEditable(false);
+            tf_desc.setText(q.getDescription());
+            tf_desc.setEditable(false);
+            tf_tech.setText(q.getTechnology());
+            tf_tech.setEditable(false);
+            tf_periode.setText(q.getPeriod());
+            tf_periode.setEditable(false);
+            btnmod.setVisible(false);
+            btndel.setVisible(false);
+            try {
+                // Define the date format that matches the expected format of dateString
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+                // Parse the dateString to a LocalDate object
+                LocalDate date = LocalDate.parse(q.getStartdate(), formatter);
+
+                // Set the parsed LocalDate to the DatePicker
+                tf_date.setValue(date);
+            } catch (DateTimeParseException e) {
+                System.err.println("Error parsing the date: " + e.getMessage());
+                // Handle error or set a default date if needed
+            }
+            tf_date.setEditable(false);
         }
-        tf_date.setEditable(false);
-    }
-    //qr code
+        //qr code
+        public void setData(Internship q) {
+            this.i = q;
+            id=q.getId();
+            tf_title.setText(q.getTitle());
+            tf_title.setEditable(false);
+            tf_desc.setText(q.getDescription());
+            tf_desc.setEditable(false);
+            tf_tech.setText(q.getTechnology());
+            tf_tech.setEditable(false);
+            tf_periode.setText(q.getPeriod());
+            tf_periode.setEditable(false);
+            try {
+
+                // Define the date format that matches the expected format of dateString
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+                // Parse the dateString to a LocalDate object
+                LocalDate date = LocalDate.parse(q.getStartdate(), formatter);
+
+                // Set the parsed LocalDate to the DatePicker
+                tf_date.setValue(date);
+            } catch (DateTimeParseException e) {
+                System.err.println("Error parsing the date: " + e.getMessage());
+                // Handle error or set a default date if needed
+            }
+            tf_date.setEditable(false);
+            try {
+                QRCodeWriter qrCodeWriter = new QRCodeWriter();
+                String Information = "titre : " +q.getTitle()+ "\n" + "description d : " + q.getDescription() + "\n" + "technologie : " + q.getTechnology() + "\n" + "start date : " + q.getStartdate()+"\n"+"periode :"+q.getPeriod();
+                int width = 300;
+                int height = 300;
+
+                BufferedImage bufferedImage = null;
+                BitMatrix byteMatrix = qrCodeWriter.encode(Information, BarcodeFormat.QR_CODE, width, height);
+                bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+                bufferedImage.createGraphics();
+
+                Graphics2D graphics = (Graphics2D) bufferedImage.getGraphics();
+                graphics.setBackground(java.awt.Color.WHITE);
+                graphics.fillRect(0, 0, width, height);
+                graphics.setColor(java.awt.Color.BLACK);
+
+                for (int i = 0; i < height; i++) {
+                    for (int j = 0; j < width; j++) {
+                        if (byteMatrix.get(i, j)) {
+                            graphics.fillRect(i, j, 1, 1);
+                        }
+                    }
+                }
+
+                System.out.println("Success...");
+
+                qrcode.setImage(SwingFXUtils.toFXImage(bufferedImage, null));
+
+                //  ImageView qrc = new ImageView();
+                // TODO
+            } catch (WriterException ex) {
+                Logger.getLogger(InternC.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+    /*
+    //qr code with img
     public void setData(Internship q) {
         this.i = q;
-        id=q.getId();
+        id = q.getId();
         tf_title.setText(q.getTitle());
         tf_title.setEditable(false);
         tf_desc.setText(q.getDescription());
@@ -123,13 +188,10 @@ public class InternC {
         tf_periode.setText(q.getPeriod());
         tf_periode.setEditable(false);
         try {
-
             // Define the date format that matches the expected format of dateString
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-
             // Parse the dateString to a LocalDate object
             LocalDate date = LocalDate.parse(q.getStartdate(), formatter);
-
             // Set the parsed LocalDate to the DatePicker
             tf_date.setValue(date);
         } catch (DateTimeParseException e) {
@@ -138,20 +200,22 @@ public class InternC {
         }
         tf_date.setEditable(false);
         try {
+            // Combine all the information into a single string
+            String imageUrl = q.getImgUrl(); // Récupérez l'URL de l'image depuis l'objet Internship
+            String information = "titre:" + q.getTitle() + ";description:" + q.getDescription() + ";technologie:" + q.getTechnology() + ";start_date:" + q.getStartdate() + ";periode:" + q.getPeriod() + ";img_url:" + imageUrl; // Combinez l'URL de l'image avec les autres informations
+
+            // Generate QR code with combined information
             QRCodeWriter qrCodeWriter = new QRCodeWriter();
-            String Information = "titre : " +q.getTitle()+ "\n" + "description d : " + q.getDescription() + "\n" + "technologie : " + q.getTechnology() + "\n" + "start date : " + q.getStartdate()+"\n"+"periode :"+q.getPeriod();
             int width = 300;
             int height = 300;
-
-            BufferedImage bufferedImage = null;
-            BitMatrix byteMatrix = qrCodeWriter.encode(Information, BarcodeFormat.QR_CODE, width, height);
-            bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+            BitMatrix byteMatrix = qrCodeWriter.encode(information, BarcodeFormat.QR_CODE, width, height);
+            BufferedImage bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
             bufferedImage.createGraphics();
 
             Graphics2D graphics = (Graphics2D) bufferedImage.getGraphics();
-            graphics.setBackground(java.awt.Color.WHITE);
+            graphics.setBackground(Color.WHITE);
             graphics.fillRect(0, 0, width, height);
-            graphics.setColor(java.awt.Color.BLACK);
+            graphics.setColor(Color.BLACK);
 
             for (int i = 0; i < height; i++) {
                 for (int j = 0; j < width; j++) {
@@ -161,16 +225,16 @@ public class InternC {
                 }
             }
 
-            System.out.println("Success...");
-
+            // Set the generated QR code image to the ImageView
             qrcode.setImage(SwingFXUtils.toFXImage(bufferedImage, null));
 
-            //  ImageView qrc = new ImageView();
-            // TODO
         } catch (WriterException ex) {
             Logger.getLogger(InternC.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+     */
+
     @FXML
     void delete(ActionEvent event) {
         try {
@@ -189,7 +253,7 @@ public class InternC {
             // If the user clicked "OK" in the confirmation dialog, proceed with the deletion
             if (userResponse == ButtonType.OK) {
                 // Create a new User instance with the provided ID
-                Internship eventToDelete = new Internship(this.id,0,"","","","","","");
+                Internship eventToDelete = new Internship(this.id, 0, "", "", "", "", "", "");
 
                 // Call the method to delete the user entity
                 is.supprimerEntite(eventToDelete);
@@ -201,7 +265,6 @@ public class InternC {
             e.printStackTrace(); // Or log the error
         }
     }
-
 
 
     @FXML
@@ -216,7 +279,7 @@ public class InternC {
             tf_title.setEditable(true);
         } else {
             LocalDate currentDate = LocalDate.now();
-            if (tf_periode.getText().isEmpty() || tf_desc.getText().isEmpty()|| tf_title.getText().isEmpty()|| tf_tech.getText().isEmpty() ||tf_date.getValue().isBefore(currentDate)||tf_date.getValue()==null ) {
+            if (tf_periode.getText().isEmpty() || tf_desc.getText().isEmpty() || tf_title.getText().isEmpty() || tf_tech.getText().isEmpty() || tf_date.getValue().isBefore(currentDate) || tf_date.getValue() == null) {
                 // Afficher un message d'alerte
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Champs manquants");
@@ -225,7 +288,7 @@ public class InternC {
                 alert.showAndWait();
                 return;
             }
-            Internship p = new Internship(this.id,this.id,tf_title.getText(),tf_desc.getText(),tf_tech.getText(),i.getTypeinternship(),String.valueOf(tf_date.getValue()),tf_periode.getText());
+            Internship p = new Internship(this.id, this.id, tf_title.getText(), tf_desc.getText(), tf_tech.getText(), i.getTypeinternship(), String.valueOf(tf_date.getValue()), tf_periode.getText());
             is.modifierEntite(p);
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Valider");
@@ -241,7 +304,6 @@ public class InternC {
             btnmod.setText("Update");
         }
     }
-
 
 
 }
