@@ -81,6 +81,7 @@ public class InternC {
     @FXML
     private TextField tf_title;
 
+
     public void setDataf(Internship q) {
         this.i = q;
         id=q.getId();
@@ -200,6 +201,8 @@ public class InternC {
             e.printStackTrace(); // Or log the error
         }
     }
+
+
 
     @FXML
     void update(ActionEvent event) {
