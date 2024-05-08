@@ -109,10 +109,9 @@ public class InternC {
         }
         tf_date.setEditable(false);
     }
-    //qr code gene
     public void setData(Internship q) {
         this.i = q;
-        id=q.getId();
+        id = q.getId();
         tf_title.setText(q.getTitle());
         tf_title.setEditable(false);
         tf_desc.setText(q.getDescription());
@@ -122,13 +121,10 @@ public class InternC {
         tf_periode.setText(q.getPeriod());
         tf_periode.setEditable(false);
         try {
-
             // Define the date format that matches the expected format of dateString
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-
             // Parse the dateString to a LocalDate object
             LocalDate date = LocalDate.parse(q.getStartdate(), formatter);
-
             // Set the parsed LocalDate to the DatePicker
             tf_date.setValue(date);
         } catch (DateTimeParseException e) {
@@ -137,20 +133,25 @@ public class InternC {
         }
         tf_date.setEditable(false);
         try {
+            // Combine all the information into a single string
+            String information = "titre : " + q.getTitle() + "\n" +
+                    "description : " + q.getDescription() + "\n" +
+                    "technologie : " + q.getTechnology() + "\n" +
+                    "start date : " + q.getStartdate() + "\n" +
+                    "periode :" + q.getPeriod() + "\n" +
+                    "id:" + q.getId(); // Add other attributes as needed
+            // Generate QR code with combined information
             QRCodeWriter qrCodeWriter = new QRCodeWriter();
-            String Information = "titre : " +q.getTitle()+ "\n" + "description d : " + q.getDescription() + "\n" + "technologie : " + q.getTechnology() + "\n" + "start date : " + q.getStartdate()+"\n"+"periode :"+q.getPeriod();
             int width = 300;
             int height = 300;
-
-            BufferedImage bufferedImage = null;
-            BitMatrix byteMatrix = qrCodeWriter.encode(Information, BarcodeFormat.QR_CODE, width, height);
-            bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+            BitMatrix byteMatrix = qrCodeWriter.encode(information, BarcodeFormat.QR_CODE, width, height);
+            BufferedImage bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
             bufferedImage.createGraphics();
 
             Graphics2D graphics = (Graphics2D) bufferedImage.getGraphics();
-            graphics.setBackground(java.awt.Color.WHITE);
+            graphics.setBackground(Color.WHITE);
             graphics.fillRect(0, 0, width, height);
-            graphics.setColor(java.awt.Color.BLACK);
+            graphics.setColor(Color.BLACK);
 
             for (int i = 0; i < height; i++) {
                 for (int j = 0; j < width; j++) {
@@ -160,16 +161,14 @@ public class InternC {
                 }
             }
 
-            System.out.println("Success...");
-
+            // Set the generated QR code image to the ImageView
             qrcode.setImage(SwingFXUtils.toFXImage(bufferedImage, null));
 
-            //  ImageView qrc = new ImageView();
-            // TODO
         } catch (WriterException ex) {
             Logger.getLogger(InternC.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     @FXML
     void delete(ActionEvent event) {
         try {
