@@ -112,7 +112,6 @@ public class InternC {
     }
 
     //qr code
-/*
     public void setData(Internship q) {
         this.i = q;
         id = q.getId();
@@ -174,8 +173,8 @@ public class InternC {
         }
     }
 
-*/
 
+/*
     public void setData(Internship q) {
         this.i = q;
         id = q.getId();
@@ -229,7 +228,7 @@ public class InternC {
             Logger.getLogger(InternC.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+*/
 
 
     @FXML
