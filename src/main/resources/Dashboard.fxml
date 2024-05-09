@@ -16,12 +16,12 @@
    <children>
       <Pane prefHeight="498.0" prefWidth="138.0" style="-fx-background-color: white;">
          <children>
-            <Button layoutX="3.0" layoutY="71.0" mnemonicParsing="false" onAction="#tocreateevent" prefHeight="25.0" prefWidth="110.0" text="add departement">
+            <Button layoutX="3.0" layoutY="71.0" mnemonicParsing="false" onAction="#tocreateevent" prefHeight="25.0" prefWidth="110.0" style="-fx-background-color: #124c79;" text="add departement" textFill="#f2f2f2">
                <font>
                   <Font size="10.0" />
                </font></Button>
-            <Button layoutX="3.0" layoutY="119.0" mnemonicParsing="false" onAction="#toeventlist" prefHeight="25.0" prefWidth="110.0" text="view list" />
-            <Label layoutX="-1.0" layoutY="37.0" prefHeight="25.0" prefWidth="126.0" text="Department manager">
+            <Button layoutX="3.0" layoutY="119.0" mnemonicParsing="false" onAction="#toeventlist" prefHeight="25.0" prefWidth="110.0" style="-fx-background-color: #124c79;" text="view list" textFill="#fffefe" />
+            <Label layoutX="-1.0" layoutY="37.0" prefHeight="25.0" prefWidth="126.0" text="Department manager" textFill="#124c79">
                <font>
                   <Font name="Segoe UI Bold Italic" size="12.0" />
                </font>
@@ -61,7 +61,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane fx:id="pn_eventlist" layoutX="122.0" prefHeight="498.0" prefWidth="810.0" style="-fx-background-color: white;">
+      <Pane fx:id="pn_eventlist" layoutX="140.0" prefHeight="498.0" prefWidth="792.0" style="-fx-background-color: white;">
          <children>
             <ScrollPane layoutX="4.0" layoutY="95.0" prefHeight="340.0" prefWidth="722.0">
                <content>
@@ -75,16 +75,16 @@
                   </GridPane>
                </content>
             </ScrollPane>
-            <Button layoutX="626.0" layoutY="452.0" mnemonicParsing="false" onAction="#refresh" prefHeight="26.0" prefWidth="98.0" text="Refresh" />
-            <Label layoutX="261.0" layoutY="22.0" prefHeight="25.0" prefWidth="209.0" text="Department list">
+            <Button layoutX="626.0" layoutY="452.0" mnemonicParsing="false" onAction="#refresh" prefHeight="26.0" prefWidth="98.0" style="-fx-background-color: #124c79;" text="Refresh" textFill="WHITE" />
+            <Label layoutX="261.0" layoutY="22.0" prefHeight="25.0" prefWidth="209.0" text="Department list" textFill="#124c79">
                <font>
                   <Font name="Segoe UI Bold Italic" size="20.0" />
                </font>
             </Label>
-            <Button layoutX="515.0" layoutY="452.0" mnemonicParsing="false" onAction="#excel" prefHeight="26.0" prefWidth="98.0" text="excel" />
+            <Button layoutX="515.0" layoutY="452.0" mnemonicParsing="false" onAction="#excel" prefHeight="26.0" prefWidth="98.0" style="-fx-background-color: #124c79;" text="excel" textFill="WHITE" />
             <TextField fx:id="tf_chercher" layoutX="539.0" layoutY="59.0" promptText="search .." />
             <Button layoutX="691.0" layoutY="59.0" mnemonicParsing="false" onAction="#go" text="search" />
-            <Button layoutX="367.0" layoutY="452.0" mnemonicParsing="false" onAction="#sort" prefHeight="26.0" prefWidth="136.0" text="Trie par nom" />
+            <Button layoutX="367.0" layoutY="452.0" mnemonicParsing="false" onAction="#sort" prefHeight="26.0" prefWidth="136.0" style="-fx-background-color: #124c79;" text="Trie par nom" textFill="WHITE" />
          </children>
       </Pane>
    </children>

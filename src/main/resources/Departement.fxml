@@ -14,7 +14,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="198.0" prefWidth="568.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.DepartementC">
    <children>
       <Pane fx:id="pn_intern" layoutX="1.0" layoutY="-1.0" prefHeight="206.0" prefWidth="592.0" style="-fx-background-color: white;">
@@ -68,17 +67,17 @@
             </Label>
 
             <TextArea fx:id="desc" layoutX="22.0" layoutY="86.0" prefHeight="94.0" prefWidth="428.0" />
-            <Button fx:id="btnadd" layoutX="473.0" layoutY="155.0" mnemonicParsing="false" onAction="#toadd" prefHeight="25.0" prefWidth="101.0" text="Add intern" />
-            <Button fx:id="btnmod" layoutX="473.0" layoutY="117.0" mnemonicParsing="false" onAction="#update" prefHeight="25.0" prefWidth="101.0" text="Update" />
-            <Button fx:id="btndel" layoutX="473.0" layoutY="79.0" mnemonicParsing="false" onAction="#delete" prefHeight="25.0" prefWidth="101.0" text="Delete" />
+            <Button fx:id="btnadd" layoutX="473.0" layoutY="155.0" mnemonicParsing="false" onAction="#toadd" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: #124c79;" text="Add intern" textFill="WHITE" />
+            <Button fx:id="btnmod" layoutX="473.0" layoutY="117.0" mnemonicParsing="false" onAction="#update" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: #124c79;" text="Update" textFill="WHITE" />
+            <Button fx:id="btndel" layoutX="473.0" layoutY="79.0" mnemonicParsing="false" onAction="#delete" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: #124c79;" text="Delete" textFill="WHITE" />
             <TextField fx:id="tf_name" layoutX="22.0" layoutY="50.0" prefHeight="25.0" prefWidth="265.0" />
             <Separator layoutX="19.0" layoutY="191.0" prefHeight="0.0" prefWidth="537.0" />
-            <Label fx:id="headmaster" layoutX="22.0" layoutY="14.0" prefHeight="18.0" prefWidth="235.0" text="Create internship :">
+            <Label fx:id="headmaster" layoutX="22.0" layoutY="14.0" prefHeight="18.0" prefWidth="235.0" text="Create internship :" textFill="#124c79">
                <font>
                   <Font name="Segoe UI Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Button layoutX="474.0" layoutY="44.0" mnemonicParsing="false" onAction="#intern" prefHeight="25.0" prefWidth="101.0" text="Interships" />
+            <Button layoutX="474.0" layoutY="44.0" mnemonicParsing="false" onAction="#intern" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: #124c79;" text="Interships" textFill="WHITE" />
          </children>
       </Pane>
    </children>
