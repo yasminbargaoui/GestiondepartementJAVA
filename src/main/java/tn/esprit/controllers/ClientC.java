@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 import tn.esprit.entities.Departement;
 import tn.esprit.service.DepartementService;
@@ -15,11 +16,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 public class ClientC {
 
     @FXML
     private GridPane grid;
+
 
     DepartementService ds = new DepartementService();
 
@@ -28,6 +34,7 @@ public class ClientC {
         grid.getChildren().clear();
         displayg();
     }
+
     private void displayg() {
         ///////////////////////////////////////////////////////////////
         ResultSet resultSet2 = ds.Getall();
